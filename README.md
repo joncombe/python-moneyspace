@@ -26,6 +26,8 @@ ms.check_order_id('MY_REF_1')
 
 ms.check_payment('MSTRFxxxxxxxxxxxxxx')
 
+ms.get_qr_image_url('MSTRFxxxxxxxxxxxxxx')
+
 ms.webhook_validator(
     '150.00',
     'OK',

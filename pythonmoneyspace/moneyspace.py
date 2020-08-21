@@ -1,6 +1,9 @@
+from datetime import datetime
 import hashlib
 import hmac
+import pytz
 import requests
+
 
 class MoneySpace:
     base_url = 'https://a.moneyspace.net'
@@ -36,7 +39,7 @@ class MoneySpace:
             data=params
         )
         try:
-            return r.json()
+            return r.json()[0]
         except:
             return { 'status': 'error' }
 
@@ -80,6 +83,20 @@ class MoneySpace:
 
         # call the api
         return self.call_api('/CreateTransactionID', params, kwargs)
+
+    # get a QR code image url from the transaction ID
+    def get_qr_image_url(self, transaction_id):
+        dt = datetime.now(pytz.timezone('Asia/Bangkok'))
+        timestamp = dt.strftime('%Y%m%d%H%M%S')
+        pre_hash = '%s%s' % (transaction_id, timestamp)
+        local_hash = hmac.new(self.secret_key.encode(), pre_hash.encode(), hashlib.sha256).hexdigest()
+
+        return 'https://www.moneyspace.net/merchantapi/makepayment/linkpaymentcard?transactionID=%s&timehash=%s&secreteID=%s&hash=%s' % (
+            transaction_id,
+            timestamp,
+            self.secret_id,
+            local_hash
+        )
 
     # validate webhooks send from moneyspace
     def webhook_validator(self, amount, status, order_id, transaction_id, hash):

@@ -4,7 +4,7 @@ from setuptools import find_packages
 
 setup(
     name='python-moneyspace',
-    version='0.0.1',
+    version='0.0.2',
     author=u'Jon Combe',
     author_email='jon@salebox.io',
     packages=find_packages(),
