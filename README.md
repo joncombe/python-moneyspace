@@ -1,5 +1,4 @@
-python-moneyspace
-=================
+# python-moneyspace
 
 A simple python class to assist connecting to the moneyspace.net payment gateway.
 
@@ -17,9 +16,9 @@ ms.create_transaction(
     'someone@example.net',  # customer's email
     150, # amount
     'MY_REF_1',  # order_id
-    'https://api.yaksri.com/success',
-    'https://api.yaksri.com/fail',
-    'https://api.yaksri.com/cancel',
+    'https://example.com/my-success-url',
+    'https://example.com/my-fail-url',
+    'https://example.com/my-cancel-url',
     1 # agreement
 )
 
