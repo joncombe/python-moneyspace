@@ -7,6 +7,7 @@ Note: this is only tested with QR code payments, however other types should work
 
 Example:
 
+```
 from moneyspace import MoneySpace
 
 ms = MoneySpace('<MY_SECRET_ID>', '<MY_SECRET_KEY')
@@ -33,3 +34,4 @@ ms.webhook_validator(
     'MSTRFxxxxxxxxxxxxxx',
     '4bfff360bf1bd83f44848a59ee3e2cd1fe77f067501e2ad4de4fd4135068160d'
 )
+```
