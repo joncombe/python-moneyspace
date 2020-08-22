@@ -7,10 +7,11 @@ Note: this is only tested with QR code payments, however other types should work
 Example:
 
 ```
-from moneyspace import MoneySpace
+from pythonmoneyspace.moneyspace import MoneySpace
 
 ms = MoneySpace('<MY_SECRET_ID>', '<MY_SECRET_KEY')
 
+# dict
 ms.create_transaction(
     'qrnone',  # payment_type
     'someone@example.net',  # customer's email
@@ -22,13 +23,17 @@ ms.create_transaction(
     1 # agreement
 )
 
+# dict
 ms.check_order_id('MY_REF_1')
 
+# dict
 ms.check_payment('MSTRFxxxxxxxxxxxxxx')
 
+# string
 ms.get_qr_image_url('MSTRFxxxxxxxxxxxxxx')
 
-ms.webhook_validator(
+# boolean
+ms.webhook_is_valid(
     '150.00',
     'OK',
     'MY_REF_1',

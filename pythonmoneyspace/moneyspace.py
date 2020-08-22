@@ -98,8 +98,8 @@ class MoneySpace:
             local_hash
         )
 
-    # validate webhooks send from moneyspace
-    def webhook_validator(self, amount, status, order_id, transaction_id, hash):
+    # validate webhooks sent from moneyspace
+    def webhook_is_valid(self, amount, status, order_id, transaction_id, hash):
         if status == 'OK':
             pre_hash = '%s%s' % (transaction_id, amount)
         else:
